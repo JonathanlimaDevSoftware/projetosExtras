@@ -1,6 +1,6 @@
 # 🚀 ProjetoExtra
 
-Bem-vindo ao **ProjetoExtra**! 🎉 Este repositório é dedicado a **projetos criativos**, **cópias de projetos** e **testes de tecnologias**. É o lugar onde compartilho tudo o que faço quando não estou estudando na plataforma [Danki Code Fullstack Master](https://www.dankicode.com/).
+Bem-vindo ao **ProjetoExtra**! 🎉 Este repositório é dedicado a **projetos criativos**, **cópias de projetos** e **testes de tecnologias**. É o lugar onde compartilho tudo o que faço quando não estou estudando na plataforma [Danki Code Fullstack Master](https://cursos.dankicode.com/).
 
 Aqui você encontrará:
 
