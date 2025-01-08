@@ -1,0 +1,14 @@
+/* auxiliar css */
+.container{
+  padding: 10px 2%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.flex-gab-10px{
+  gap: 10px;
+}
+.flex-between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
