@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/* logo site */
+.-c_logo a{
+  font-size: 2rem;
+}
+
+/* container nome e foto do programador */
+/* .-c_user-profile{} */
+.-c_user-profile__img{
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  border: 2px solid white;
+  background-image: url("/assets/img/profile2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+
+/* card */
+.-c_card-single{
+  width: 420px;
+  height: 500px;
+  background: #ccc  url("") no-repeat center;
+  background-size: cover;
+
+  position: relative;
+}
+/* imagens diferente para cada container */
+.-c_card-single:nth-child(2){
+  
+}
+.-c_card-single:nth-child(3){
+  
+}
+/* parte de texto dos cards */
+.-c_card-single__text{
+  position: absolute;
+  bottom: 0px;
+}
+/* btns dos cards */
+.-c_btn-single{
+  display: inline-block;
+  border: 3px solid white;
+  padding: 5px 10px;
+  border-radius: 30px;
+}

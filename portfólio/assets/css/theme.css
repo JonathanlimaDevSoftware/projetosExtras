@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+:root{
+  /* background */
+  --primary-bg-color:#3D3C40;
+  
+  /* text */
+  --primary-text-color: white;
+}
+
+body{
+  background-color: var(--primary-bg-color);
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, li, div, strong, em {
+  color:  var(--primary-text-color);
+}
