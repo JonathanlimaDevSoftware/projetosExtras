@@ -81,3 +81,6 @@ Aqui estão as linguagens e ferramentas que estou aprendendo ou já utilizei em 
 
 **✨ Obrigado por visitar meu perfil! ✨**  
 Se quiser trocar uma ideia sobre tecnologia, projetos ou aprendizado, **sinta-se à vontade para me chamar**! 😄  
+
+
+![Inspiração para layout gerado pelo chatGPT](layout.chatGPT-1.png)

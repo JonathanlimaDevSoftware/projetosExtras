@@ -1,0 +1,21 @@
+.app-header{
+  text-align: center;
+  font-size: 2rem;
+  color: #0ff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.705), 0 0 20px rgba(0, 255, 255, 0.712), 0 0 30px rgba(0, 255, 255, 0.705);
+  transition: all .75s;
+}
+
+.app-header:hover{
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+  transform: scale(1.1);
+  
+}
+
+
+/* components add */
+.to-write {
+  font-size: 1rem;
+  text-transform: capitalize;
+  color: var(--color-input);
+}

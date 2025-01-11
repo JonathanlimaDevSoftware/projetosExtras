@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supermarket List App</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2331/2331984.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle, #000000, #0d0d2e, #1a1a50);
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255, 0, 150, 0.2), rgba(0, 255, 255, 0.2));
+      animation: neonGlow 5s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes neonGlow {
+      0% {
+        background: linear-gradient(120deg, rgba(255, 0, 150, 0.2), rgba(0, 255, 255, 0.2));
+      }
+      100% {
+        background: linear-gradient(120deg, rgba(0, 255, 0, 0.2), rgba(255, 255, 0, 0.2));
+      }
+    }
+
+    .app-container {
+      width: 90%;
+      max-width: 400px;
+      background-color: rgba(30, 30, 30, 0.9);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      border: 5px solid;
+      border-image: linear-gradient(45deg, #0ff, #f0f, #ff0, #0f0, #0ff) 1;
+      animation: borderAnimation 5s linear infinite;
+      
+    }
+    #app-now{
+      border-radius: 20px;
+    }
+
+    @keyframes borderAnimation {
+      to {
+        border-image-source: linear-gradient(45deg, #0ff, #f0f, #ff0, #0f0, #0ff);
+      }
+      from {
+        border-image-source: linear-gradient(45deg, #f0f, #0ff, #0f0, #ff0, #f0f);
+      }
+    }
+
+    .app-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .app-header h1 {
+      font-size: 2rem;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    }
+
+    .item-input {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .item-input input {
+      flex: 1;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px 0 0 10px;
+      outline: none;
+      background-color: #222;
+      color: #fff;
+    }
+
+    .item-input button {
+      padding: 12px;
+      font-size: 1rem;
+      background: linear-gradient(45deg, #0ff, #f0f);
+      color: #fff;
+      border: none;
+      border-radius: 0 10px 10px 0;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .item-input button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    .item-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .item-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(50, 50, 50, 0.9);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .item-list li span {
+      word-break: break-word;
+    }
+
+    .item-list li.completed span {
+      text-decoration: line-through;
+      color: #a0a0a0;
+    }
+
+    .item-list li .complete-btn {
+      color: #0f0;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: color 0.3s;
+    }
+
+    .item-list li .complete-btn:hover {
+      color: #00ff00;
+    }
+
+    .item-list li .delete-btn {
+      color: #f00;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .item-list li .delete-btn:hover {
+      color: #ff4500;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container " id="app-now">
+    <div class="app-header">
+      <h1>Supermarket List</h1>
+    </div>
+    <div class="item-input">
+      <input type="text" id="itemInput" placeholder="Add a new item...">
+      <button id="addItemButton"><i class="fas fa-plus"></i></button>
+    </div>
+    <ul class="item-list" id="itemList"></ul>
+  </div>
+  <script>
+    const itemInput = document.getElementById('itemInput');
+    const addItemButton = document.getElementById('addItemButton');
+    const itemList = document.getElementById('itemList');
+
+    // Load items from localStorage
+    const loadItems = () => {
+      const items = JSON.parse(localStorage.getItem('supermarketList')) || [];
+      items.forEach(item => {
+        addItemToDOM(item.text, item.completed);
+      });
+    };
+
+    // Save items to localStorage
+    const saveItems = () => {
+      const items = [];
+      document.querySelectorAll('.item-list li').forEach(li => {
+        items.push({
+          text: li.querySelector('span').textContent,
+          completed: li.classList.contains('completed'),
+        });
+      });
+      localStorage.setItem('supermarketList', JSON.stringify(items));
+    };
+
+    // Function to add a new item to the DOM
+    const addItemToDOM = (text, completed = false) => {
+      const listItem = document.createElement('li');
+      if (completed) listItem.classList.add('completed');
+
+      const itemSpan = document.createElement('span');
+      itemSpan.textContent = text;
+
+      const completeButton = document.createElement('i');
+      completeButton.classList.add('fas', 'fa-check', 'complete-btn');
+      completeButton.addEventListener('click', () => {
+        listItem.classList.toggle('completed');
+        saveItems();
+      });
+
+      const deleteButton = document.createElement('i');
+      deleteButton.classList.add('fas', 'fa-trash', 'delete-btn');
+      deleteButton.addEventListener('click', () => {
+        itemList.removeChild(listItem);
+        saveItems();
+      });
+
+      listItem.appendChild(completeButton);
+      listItem.appendChild(itemSpan);
+      listItem.appendChild(deleteButton);
+      itemList.appendChild(listItem);
+    };
+
+    // Function to add a new item
+    const addItem = () => {
+      const itemText = itemInput.value.trim();
+      if (itemText === '') return;
+      addItemToDOM(itemText);
+      saveItems();
+      itemInput.value = '';
+    };
+
+    // Add item on button click
+    addItemButton.addEventListener('click', addItem);
+
+    // Add item on Enter key press
+    itemInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') addItem();
+    });
+
+    // Load items on page load
+    loadItems();
+
+
+
+    
+  </script>
+</body>
+</html>

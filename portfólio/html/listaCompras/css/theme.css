@@ -1,0 +1,11 @@
+:root{
+  --dark: #252525;
+  --dark-gree: #363636;
+  --color-input: #b6b6b6 ;
+}
+
+
+
+.-t_app-list{
+  background-color: var(--dark);
+}

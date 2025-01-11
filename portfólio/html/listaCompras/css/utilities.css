@@ -1,0 +1,40 @@
+.see{
+  border: red 1px solid;
+}
+
+.border-radius-10{
+  border-radius: 10px;
+}
+
+
+.center{
+  margin: 0 auto;
+}
+.padding-12{
+  padding: 12px 15px;
+}
+.padding-6{
+  padding: 6px 15px;
+}
+
+
+.flex{
+  display: flex;
+}
+.between{
+  align-items: center;
+  justify-content: space-between;
+}
+.flex-1{
+  flex: 1;
+}
+.column{
+  flex-direction: column;
+}
+.gap-20{
+  gap: 20px;
+}
+
+.bg-dark-gree{
+  background-color: var(--dark-gree);
+}

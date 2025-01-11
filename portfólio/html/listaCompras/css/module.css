@@ -1,0 +1,51 @@
+
+body{
+  padding: 0 10px;
+}
+
+/* containers */
+.-c_app-container{
+  max-width: 600px;
+  
+}
+.-c_app-list{
+  min-height: 300px;
+}
+
+/* component add */
+
+
+.to-write{
+  padding: 12px;
+  width: 100%;
+}
+.to-add{
+  padding: 2px 10px;
+  font-size: 2rem;
+  background: linear-gradient(45deg, #0ff, #f0f);
+  color: #fff;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.to-add:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #0ff;
+}
+.to-add:active{
+  transform: scale(.9);
+}
+
+
+/* conatiner - list */
+
+.span-text{
+  color: var(--color-input);
+}
+
+
+.ckeckout:active, .trash:active{
+  transform: scale(1.2);
+}
+
