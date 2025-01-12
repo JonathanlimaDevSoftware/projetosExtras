@@ -1,16 +1,84 @@
 
 body{
   padding: 0 10px;
+  height: 100vh;
+  padding-top: 150px;
+
 }
+.gradient-background {
+  background: linear-gradient(300deg,#006b8a,#48006f,#000066);
+  background-size: 180% 180%;
+  animation: gradient-animation 10s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 /* containers */
 .-c_app-container{
   max-width: 600px;
-  
 }
 .-c_app-list{
   min-height: 300px;
+  position: relative;
 }
+
+/* borda colorida animada */
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+:root{
+  --padding-border-effect:8px;
+  --angle: 0deg;
+}
+.-c_app-list::after,.-c_app-list::before{
+  content: " ";
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095);
+  width: calc(100% + var(--padding-border-effect));
+  height: calc(100% + var(--padding-border-effect));
+  border-radius: 10px;
+  translate: -50% -50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  animation: 3s spin linear infinite;
+}
+
+@keyframes spin {
+  from{
+    --angle:  0deg;
+  }
+  to{
+    --angle:  360deg;
+  }
+}
+
+.-c_app-list::before{
+  filter: blur(1.2rem);
+  opacity: 0.5;
+  transition: all 1s;
+}
+
+.-c_app-list:hover.-c_app-list::before{
+  opacity: 1;
+  filter: blur(1.7rem);
+
+}
+
+
 
 /* component add */
 
@@ -20,7 +88,7 @@ body{
   width: 100%;
 }
 .to-add{
-  padding: 2px 10px;
+  padding: 2px 15px;
   font-size: 2rem;
   background: linear-gradient(45deg, #0ff, #f0f);
   color: #fff;

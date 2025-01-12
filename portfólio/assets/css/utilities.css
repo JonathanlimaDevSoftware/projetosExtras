@@ -4,6 +4,9 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+.block{
+  display: block;
+}
 .flex{
   display: flex;
 }
@@ -41,7 +44,17 @@
   text-align: center;
 }
 
+
+
+
+/* grid layout */
+.grid{
+  display: grid;
+}
+
+
 /* marke contonter */
 .see{
   border: 1px solid red;
 }
+
